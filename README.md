@@ -39,21 +39,13 @@ The two cities have very different dengue patterns (San Juan peaks at 400+ cases
 - **City-specific models beat one-size-fits-all.** San Juan and Iquitos have completely different scales and seasonality. Training them together was hurting both.
 - **Wide rolling windows help.** Dengue outbreaks respond to climate conditions from weeks or months ago, not just the current week. 12 and 26-week rolling features capture that delayed effect.
 
-## How to Run
+## Verify
 
-1. Open [the notebook in Google Colab](https://colab.research.google.com/github/ScottT2-spec/dengai-solution/blob/main/DengAI_Solution.ipynb)
-2. Download the competition data from [DrivenData](https://www.drivendata.org/competitions/44/dengai-predicting-disease-spread/data/)
-3. Upload the 3 CSV files to your Google Drive
-4. Update the `DATA_DIR` path in the notebook
-5. Run all cells — generates `submission.csv`
+- [DengAI Competition Leaderboard](https://www.drivendata.org/competitions/44/dengai-predicting-disease-spread/leaderboard/)
+- Metric: Mean Absolute Error (MAE)
+- 15,988 participants
 
 ## Files
 
-- `DengAI_Solution.ipynb` — Colab notebook (run this)
+- `DengAI_Solution.ipynb` — Colab notebook
 - `dengai_solution.py` — Same code as a Python script
-
-## Competition
-
-- [DengAI on DrivenData](https://www.drivendata.org/competitions/44/dengai-predicting-disease-spread/)
-- Metric: Mean Absolute Error (MAE)
-- 15,988 participants
