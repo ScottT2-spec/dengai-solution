@@ -39,9 +39,10 @@ The two cities have very different dengue patterns (San Juan peaks at 400+ cases
 - **City-specific models beat one-size-fits-all.** San Juan and Iquitos have completely different scales and seasonality. Training them together was hurting both.
 - **Wide rolling windows help.** Dengue outbreaks respond to climate conditions from weeks or months ago, not just the current week. 12 and 26-week rolling features capture that delayed effect.
 
-## Verify
+## Verify My Rank
 
-- [DengAI Competition Leaderboard](https://www.drivendata.org/competitions/44/dengai-predicting-disease-spread/leaderboard/)
+- [DengAI Leaderboard](https://www.drivendata.org/competitions/44/dengai-predicting-disease-spread/leaderboard/) — search "Scott123"
+- [My DrivenData Profile](https://www.drivendata.org/users/Scott123/)
 - Metric: Mean Absolute Error (MAE)
 - 15,988 participants
 
