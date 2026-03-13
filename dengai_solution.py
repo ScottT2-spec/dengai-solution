@@ -11,9 +11,7 @@ Approach:
 - Metric: Mean Absolute Error (MAE)
 """
 
-# ============================================================
-# CELL 1: Setup
-# ============================================================
+## cell 1: setup
 
 # !pip install -q xgboost lightgbm catboost scikit-learn pandas numpy
 
@@ -25,9 +23,7 @@ DATA_DIR = "/content/drive/MyDrive/dengai"  # or wherever you upload them
 # If running locally for testing:
 # DATA_DIR = "."
 
-# ============================================================
-# CELL 2: Load data
-# ============================================================
+## cell 2: load data
 
 import pandas as pd
 import numpy as np
@@ -51,9 +47,7 @@ print(f"Iquitos:  {len(train[train.city=='iq'])} weeks")
 print(f"\nTarget stats:")
 print(train.groupby("city")["total_cases"].describe())
 
-# ============================================================
-# CELL 3: Feature engineering
-# ============================================================
+## cell 3: feature engineering
 
 def engineer_features(df, is_train=True):
     """Create features from the raw data. Works for both train and test."""
@@ -157,9 +151,7 @@ test_eng = engineer_features(test_features, is_train=False)
 print(f"Train features: {train_eng.shape[1]} columns")
 print(f"Test features:  {test_eng.shape[1]} columns")
 
-# ============================================================
-# CELL 4: Prepare for modeling
-# ============================================================
+## cell 4: prepare for modeling
 
 # Columns to drop before modeling
 drop_cols = ["city", "total_cases"]
@@ -175,9 +167,7 @@ test_eng = test_eng[feature_cols]  # same column order
 
 print(f"Feature count: {len(feature_cols)}")
 
-# ============================================================
-# CELL 5: Train models per city
-# ============================================================
+## cell 5: train models per city
 
 from xgboost import XGBRegressor
 from lightgbm import LGBMRegressor
@@ -304,9 +294,7 @@ test_with_city = pd.concat([test_with_city, test_eng], axis=1)
 sj_predictions = train_and_predict_city("sj", train_eng, test_with_city, feature_cols)
 iq_predictions = train_and_predict_city("iq", train_eng, test_with_city, feature_cols)
 
-# ============================================================
-# CELL 6: Multi-seed ensemble (extra boost)
-# ============================================================
+## cell 6: multi-seed ensemble (extra boost)
 
 print("\n\nRunning multi-seed ensemble for robustness...")
 
@@ -346,9 +334,7 @@ iq_final = np.round(np.mean(all_iq_preds, axis=0)).astype(int)
 print(f"San Juan predictions: min={sj_final.min()}, max={sj_final.max()}, mean={sj_final.mean():.1f}")
 print(f"Iquitos predictions:  min={iq_final.min()}, max={iq_final.max()}, mean={iq_final.mean():.1f}")
 
-# ============================================================
-# CELL 7: Create submission
-# ============================================================
+## cell 7: create submission
 
 # Build submission DataFrame
 sj_test = test_features[test_features.city == "sj"][["city", "year", "weekofyear"]].copy()
